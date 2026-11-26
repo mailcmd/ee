@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DProxy Test</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+      background-color: white;
+    }
+    #lung {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 80vh;
+      height: 80vh;
+      background-color: white;
+      border-radius: 50%;
+      border: 2px solid #a13b51;
+    }
+    
+    #lung > div:first-child {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      background-color: #a13b51;
+      width: 2rem;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      __animation-name: bigball;
+      animation-duration: 18s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      container-type: inline-size;
+    }
+    #lung > div:first-child::before {
+      content: attr(counter);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 2;
+      color: white;
+      font-family: Arial;
+      font-size: 90cqw;
+    }
+
+    #lung > div:nth-child(n+2):nth-child(-n+5) {
+      position: absolute;
+      z-index: 0;
+      left: 50%;
+      top: 50%;
+      background-color: white;
+      border: 1px solid #a13b51;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      offset-distance: 99%;
+      offset-rotate: 0deg;      
+    }
+    
+    #lung > div:nth-child(2) {
+      offset-path: ray(0deg);
+    }
+    #lung > div:nth-child(3) {
+      offset-path: ray(102.8deg);
+    }
+    #lung > div:nth-child(4) {
+      offset-path: ray(154.2deg);
+    }
+    #lung > div:nth-child(5) {
+      offset-path: ray(308.54deg);
+    }
+
+    #lung > div:last-child {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      top: 50%;
+      background-color: #a13b51;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      offset-path: ray(0deg);
+      offset-distance: 99%;
+      offset-rotate: 0deg;      
+      __animation-name: smallball;
+      animation-duration: 18s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    
+    @keyframes bigball {
+      0% {
+        width: 2rem;
+      }
+      28.56% {
+        width: 92%;
+      }
+      42.84% {
+        width: 92%;
+      }
+      85.68% {
+        width: 2rem;
+      }
+      100% {
+        width: 2rem;
+      }
+    }
+    
+    @keyframes smallball {
+      0% {
+        offset-path: ray(0deg);
+      }
+      28.56% {
+        offset-path: ray(102.8deg);
+      }
+      42.84% {
+        offset-path: ray(154.2deg);
+      }
+      85.68% {
+        offset-path: ray(308.54deg);
+      }
+      100% {
+        offset-path: ray(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="lung">
+    <div counter="1"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  
+  <script src="index.js"></script>
+</body>    
+</html>
