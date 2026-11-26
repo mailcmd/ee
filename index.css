@@ -1,0 +1,308 @@
+:root {
+    --main-color: #9b6470;
+    --contrast-color: #3d1d2c;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: var(--main-color);
+}
+
+#controls {
+    position: relative;
+    text-align: center;    
+    width: 14rem;
+    border: 1px solid var(--contrast-color);
+    margin: 0.5rem;
+    filter: invert(1);
+    background-color: var(--main-color);
+    border-radius: 0.6rem;
+}
+
+#controls::before {
+    content: attr(duration) "s";
+    position: absolute;
+    font-family: Arial;
+    font-size: 80%;
+    top: 0.75rem;
+    left: calc(50% - 0.8rem);
+}
+
+input[type="range"] {
+    accent-color: var(--contrast-color);
+    width: calc(100% - 4rem);
+    margin-bottom: 1rem;
+    position: relative;
+    top: 1.5rem;
+    cursor: pointer;
+}
+button {
+    margin: 1rem 0;
+    background-color: var(--main-color);
+    border: 1px solid var(--contrast-color);
+    border-radius: 0.2rem;
+}
+
+button:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+}
+
+#lung {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 80vh;
+    height: 80vh;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    border: 2px solid var(--contrast-color);
+}
+
+#lung > div:first-child {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--contrast-color);
+    width: 2rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    __animation-name: bigball;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    container-type: inline-size;
+}
+#lung > div:first-child::before {
+    content: attr(counter);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    color: var(--main-color);
+    font-family: Arial;
+    font-size: 90cqw;
+    animation-name: var(--anim-name);
+    animation-duration: var(--anim-duration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#lung > div:last-child {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    background-color: var(--contrast-color);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    offset-path: ray(0deg);
+    offset-distance: 99%;
+    offset-rotate: 0deg;
+    __animation-name: smallball;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#lung > div:nth-child(7),
+#lung > div:nth-child(10),
+#lung > div:nth-child(19),
+#lung > div:nth-child(22) {
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 50%;
+    background-color: var(--contrast-color);
+    border: 1px solid var(--contrast-color);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    offset-distance: 99%;
+    offset-rotate: 0deg;
+}
+#lung > div:nth-child(7) {
+    offset-path: ray(102.8deg);
+}
+#lung > div:nth-child(10) {
+    offset-path: ray(154.2deg);
+}
+#lung > div:nth-child(19) {
+    offset-path: ray(308.54deg);
+}
+#lung > div:nth-child(22) {
+    offset-path: ray(0deg);
+}
+
+#lung > div:nth-child(n+2):nth-child(-n+6),
+#lung > div:nth-child(n+8):nth-child(-n+9),
+#lung > div:nth-child(n+11):nth-child(-n+18),
+#lung > div:nth-child(n+20):nth-child(-n+21) {
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 50%;
+    background-color: var(--main-color);
+    border: 1px solid var(--contrast-color);
+    width: 0rem;
+    height: 0rem;
+    border-radius: 50%;
+    offset-distance: 99.5%;
+    offset-rotate: 0deg;
+}
+
+#lung > div:nth-child(2) {
+    offset-path: ray(calc(17.1428deg * 1));
+}
+#lung > div:nth-child(3) {
+    offset-path: ray(calc(17.1428deg * 2));
+}
+#lung > div:nth-child(4) {
+    offset-path: ray(calc(17.1428deg * 3));
+}
+#lung > div:nth-child(5) {
+    offset-path: ray(calc(17.1428deg * 4));
+}
+#lung > div:nth-child(6) {
+    offset-path: ray(calc(17.1428deg * 5));
+}
+#lung > div:nth-child(8) {
+    offset-path: ray(calc(17.1428deg * 7));
+}
+#lung > div:nth-child(9) {
+    offset-path: ray(calc(17.1428deg * 8));
+}
+#lung > div:nth-child(11) {
+    offset-path: ray(calc(17.1428deg * 10));
+}
+#lung > div:nth-child(12) {
+    offset-path: ray(calc(17.1428deg * 11));
+}
+#lung > div:nth-child(13) {
+    offset-path: ray(calc(17.1428deg * 12));
+}
+#lung > div:nth-child(14) {
+    offset-path: ray(calc(17.1428deg * 13));
+}
+#lung > div:nth-child(15) {
+    offset-path: ray(calc(17.1428deg * 14));
+}
+#lung > div:nth-child(16) {
+    offset-path: ray(calc(17.1428deg * 15));
+}
+#lung > div:nth-child(17) {
+    offset-path: ray(calc(17.1428deg * 16));
+}
+#lung > div:nth-child(18) {
+    offset-path: ray(calc(17.1428deg * 17));
+}
+#lung > div:nth-child(20) {
+    offset-path: ray(calc(17.1428deg * 19));
+}
+#lung > div:nth-child(21) {
+    offset-path: ray(calc(17.1428deg * 20));
+}
+
+@keyframes bigball {
+    0% {
+        width: 2rem;
+        box-shadow: inset 0 0 0px 0px var(--main-color);
+    }
+    28.5714% {
+        width: 92%;
+        __box-shadow: inset 0 0 50px 10px var(--main-color);
+    }
+    42.8541% {
+        width: 92%;
+    }
+    85.7142% {
+        width: 2rem;
+    }
+    100% {
+        width: 2rem;
+    }
+}
+
+@keyframes smallball {
+    0% {
+        offset-path: ray(0deg);
+    }
+    100% {
+        offset-path: ray(360deg);
+    }
+}
+
+@keyframes counter {
+    0% {
+        content: " ";
+    }
+    4.7619% {
+        content: "1";
+    }
+    9.5238% {
+        content: "2";
+    }
+    14.2857% {
+        content: "3";
+    }
+    19.0476% {
+        content: "4";
+    }
+    23.8095% {
+        content: "5";
+    }
+    28.5714% {
+        content: "6";
+    }
+    33.3333% {
+        content: "1";
+    }
+    38.0952% {
+        content: "2";
+    }
+    42.8571% {
+        content: "3";
+    }
+    47.619% {
+        content: "1";
+    }
+    52.3809% {
+        content: "2";
+    }
+    57.1428% {
+        content: "3";
+    }
+    61.9047% {
+        content: "4";
+    }
+    66.6666% {
+        content: "5";
+    }
+    71.4285% {
+        content: "6";
+    }
+    76.1904% {
+        content: "7";
+    }
+    80.9523% {
+        content: "8";
+    }
+    85.7142% {
+        content: "9";
+    }
+    90.4761% {
+        content: "1";
+    }
+    95.238% {
+        content: "2";
+    }
+    100% {
+        content: "3";
+    }
+}
+

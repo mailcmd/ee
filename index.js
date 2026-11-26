@@ -1,23 +1,47 @@
-const sequence = [1,2,3,4,5,6,1,2,3,1,2,3,4,5,6,7,8,9,1,2,3];
-let seq_index = 0;
-let interval_id = -1;
-let duration = 18;
-
-function play() {
-    document.querySelector('#lung > div:first-child').style.animationName = 'bigball';
-    document.querySelector('#lung > div:last-child').style.animationName = 'smallball';
-    document.querySelector('#lung > div:first-child').style.animationDuration = duration+'s';
-    document.querySelector('#lung > div:last-child').style.animationDuration = duration+'s';
-    seq_index = 0;
-    interval_id = setInterval(()=>{
+const object = {
+    duration: 18,
+    set_duration: function() {
+        this.stop();
+    },
+    play: function() {
         document.querySelector('#lung > div:first-child')
-            .setAttribute('counter', sequence[seq_index++]);
-        seq_index = seq_index == sequence.length ? 0 : seq_index;
-    }, 1000*duration/21);
-}
+            .style.animationName = 'bigball';
+        document.querySelector('#lung > div:first-child')
+            .style.setProperty('--anim-name', 'counter');
+        document.querySelector('#lung > div:last-child')
+            .style.animationName = 'smallball';
+        document.querySelector('#lung > div:first-child')
+            .style.animationDuration = this.duration+'s';
+        document.querySelector('#lung > div:first-child')
+            .style.setProperty('--anim-duration', this.duration+'s');
+        document.querySelector('#lung > div:last-child')
+            .style.animationDuration = this.duration+'s';
+    },
+    stop: function() {
+        document.querySelector('#lung > div:first-child')
+            .style.animationName = '';
+        document.querySelector('#lung > div:last-child')
+            .style.animationName = '';
+        document.querySelector('#lung > div:first-child')
+            .style.setProperty('--anim-name', '');
+    }
+};
 
-function stop() {
-    document.querySelector('#lung > div:first-child').style.animationName = '';
-    document.querySelector('#lung > div:last-child').style.animationName = '';
-    clearInterval(interval_id);
-}
+// Event fired after KSS.init
+window.addEventListener('kssready', function(e){
+    console.log('kssready event triggered!', e);
+    KSS.add_sandbox('ee', object, document.body);
+});
+
+// Main process
+(async function(){
+    KSS.init();
+})();
+
+
+
+
+
+
+
+
